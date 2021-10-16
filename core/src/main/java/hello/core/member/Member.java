@@ -11,6 +11,5 @@ public class Member {
         this.grade = grade;
     }
 
-    set
     
 }
