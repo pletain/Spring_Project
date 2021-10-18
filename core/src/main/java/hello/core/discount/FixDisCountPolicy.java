@@ -8,5 +8,5 @@ public class FixDisCountPolicy implements DiscountPolicy {
     public int discount(Member member, int price) {
         return 0;
     }
-    
+     
 }
