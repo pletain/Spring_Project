@@ -2,17 +2,27 @@ package hello.core;
 
 import hello.core.Order.OrderService;
 import hello.core.Order.OrderServiceImpl;
+import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDisCountPolicy;
+import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
 
 public class AppConfig {
     public MemberService memberService() {
-        return new MemberServiceImpl(new MemoryMemberRepository());
+        return new MemberServiceImpl(memberRepository());
     }
 
     public OrderService orderService() {
-        return new OrderServiceImpl(new MemoryMemberRepository(), new FixDisCountPolicy());
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
+    }
+
+    private MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+    
+    private DiscountPolicy discountPolicy() {
+        return new FixDisCountPolicy();
     }
 }
