@@ -19,7 +19,7 @@ public class StatefulServiceTest {
 
         System.out.println(a);
         Assertions.assertThat(a).isEqualTo(10000);
-    } 
+    }
 
     static class TestConfig {
         @Bean
