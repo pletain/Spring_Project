@@ -1,14 +1,14 @@
 package hello.core.Order;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import hello.core.discount.DiscountPolicy;
 // 이제 구체 클래스를 의존하지 않아도 됨.
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 
-@Configuration
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
