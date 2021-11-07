@@ -1,9 +1,9 @@
 package hello.core.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 // 이제 구체 클래스를 의존하지 않아도 됨.
 import hello.core.member.Member;
@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService{
     // }
     
     @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("main") DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
