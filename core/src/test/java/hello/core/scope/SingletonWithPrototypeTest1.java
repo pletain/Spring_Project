@@ -2,10 +2,10 @@ package hello.core.scope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -31,14 +31,15 @@ public class SingletonWithPrototypeTest1 {
         
         // private final PrototypeBean prototypeBean;
         @Autowired
-        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        // private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        private Provider<PrototypeBean> provider;
 
         // public ClientBean(PrototypeBean prototypeBean) {
         //     this.prototypeBean = prototypeBean;
         // }
 
         public int logic() {
-            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            PrototypeBean prototypeBean = provider.get();
             prototypeBean.addCount();
             int count = prototypeBean.getCount();
             return count;
